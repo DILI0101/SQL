@@ -1,1 +1,17 @@
-https://www.khanacademy.org/computer-programming/spin-off-of-project-design-a-store-database/6044263572357120
+Create a list of favorite books database
+
+CREATE TABLE makeup (id INTEGER PRIMARY KEY, name TEXT, color TEXT, price INTEGER, quantity INTEGER); 
+
+INSERT INTO makeup VALUES (1, "Lipstick", "Red", 12, 2);
+INSERT INTO makeup VALUES (2, "Lipgloss", "Pink", 8, 3);
+INSERT INTO makeup VALUES (3, "Lipliner", "Brown", 10, 3);
+INSERT INTO makeup VALUES (4, "Blush", "Peach", 20, 2);
+INSERT INTO makeup VALUES (5, "Highlighter", "Bronze", 25, 3);
+INSERT INTO makeup VALUES (6, "Mascara", "Black", 18, 1);
+INSERT INTO makeup VALUES (7, "Eyeliner", "Blue", 6, 1);
+
+display the database ordered by price.
+SELECT name, SUM(price) FROM makeup GROUP BY price;
+
+SELECT name, price, color FROM makeup ORDER BY price desc
+limit 3
