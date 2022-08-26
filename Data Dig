@@ -1,0 +1,60 @@
+CREATE TABLE mostpopulated_countries (id INTEGER PRIMARY KEY AUTOINCREMENT , country TEXT, population INTEGER, year INTEGER, growthrate INTEGER);
+
+INSERT INTO mostpopulated_countries(country, population, year, growthrate) VALUES ("china", "1,425,887,337", "2022", "0.01");
+INSERT INTO  mostpopulated_countries(country, population, year, growthrate) VALUES ("india", "1,417,173,173", "2022", "0.68");
+INSERT INTO  mostpopulated_countries(country, population, year, growthrate) VALUES ("united states", "338,289,857", "2022", "0.38");
+INSERT INTO  mostpopulated_countries(country, population, year, growthrate) VALUES ("indonesia", "275,501,339", "2022", "0.64");
+INSERT INTO  mostpopulated_countries(country, population, year, growthrate) VALUES ("pakistan", "235,824,862", "2022", "1.91");
+
+INSERT INTO mostpopulated_countries(country, population, year, growthrate) VALUES ("china", "1,425,887,336", "2021", "0.08");
+INSERT INTO  mostpopulated_countries(country, population, year, growthrate) VALUES ("india", "1,407,563,842", "2021", "0.80");
+INSERT INTO  mostpopulated_countries(country, population, year, growthrate) VALUES ("united states", "336,997,624", "2021", "0.58");
+INSERT INTO  mostpopulated_countries(country, population, year, growthrate) VALUES ("indonesia", "273,753,191", "2021", "0.70");
+INSERT INTO  mostpopulated_countries(country, population, year, growthrate) VALUES ("pakistan", "231,402,117", "2021", "1.85");
+
+
+
+SELECT * FROM mostpopulated_countries WHERE growthrate > 0.50;
+
+/*AND*/
+SELECT * FROM mostpopulated_countries WHERE growthrate > 0.50 AND year = 2022;
+
+/*OR*/
+SELECT * FROM mostpopulated_countries WHERE growthrate > 0.50 OR population < 1425887336;
+
+SELECT country, MAX(growthrate) AS max_growthrate FROM mostpopulated_countries GROUP BY country; 
+SELECT country, MIN(growthrate) AS min_growthrate FROM mostpopulated_countries GROUP BY country; 
+
+SELECT country, SUM(growthrate) AS total_growthrate FROM mostpopulated_countries GROUP BY country
+HAVING growthrate > 0.01;
+
+SELECT country, AVG(growthrate) AS avg_growthrate FROM mostpopulated_countries GROUP BY country
+HAVING avg_growthrate > 0.05;
+
+SELECT COUNT(*) FROM mostpopulated_countries WHERE year = 2021;
+
+/*IN*/
+SELECT * FROM mostpopulated_countries WHERE year IN ("2022");
+
+/*CASE*/
+SELECT country, growthrate,
+CASE
+WHEN growthrate > 0.60 THEN "above max"
+WHEN growthrate < 0.60 THEN "target rate"
+ELSE "below rate"
+END as "expected_rate"
+FROM mostpopulated_countries;
+
+SELECT COUNT (*), country,
+CASE
+WHEN growthrate > 0.60 THEN "above max"
+WHEN growthrate < 0.60 THEN "target rate"
+ELSE "below rate"
+END as "expected_rate"
+FROM mostpopulated_countries
+GROUP BY expected_rate;
+
+
+
+   
+   
