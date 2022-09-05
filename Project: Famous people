@@ -1,0 +1,40 @@
+
+CREATE TABLE latino_stars (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, nationality TEXT);
+
+INSERT INTO latino_stars (name, age, nationality) VALUES ("Jennifer.Lopez", "53", "Puertorican");
+INSERT INTO latino_stars (name, age, nationality) VALUES ("Rita.Moreno", "90", "Puertorican");
+INSERT INTO latino_stars (name, age, nationality) VALUES ("Roberto.Clemente", "38", "Puertorican");
+INSERT INTO latino_stars (name, age, nationality) VALUES ("Julia.Alvarez", "72", "Dominican");
+INSERT INTO latino_stars (name, age, nationality) VALUES ("Oscar.delaRenta", "82", "Dominican");
+INSERT INTO latino_stars (name, age, nationality) VALUES ("Dolores.Huerta", "92", "Mexican");
+
+CREATE TABLE major_accomplishments (id INTEGER PRIMARY KEY, name TEXT, career TEXT, net_worth INTEGER, top_achievement TEXT);
+
+INSERT INTO major_accomplishments (name, career, net_worth, top_achievement) VALUES ("Jennifer.Lopez", "singer", "400Million", "first latina to get paid over 1Million dollars");
+INSERT INTO major_accomplishments (name, career, net_worth, top_achievement) VALUES ("Rita.Moreno", "actress", "10Million", "first and only latina to win an emmy");
+INSERT INTO major_accomplishments (name, career, net_worth, top_achievement) VALUES ("Roberto.Clemente", "baseball player", "300thousand", "first latino player in the hall of fame");
+INSERT INTO major_accomplishments (name, career, net_worth, top_achievement) VALUES ("Julia.Alvarez", "poet", "1Million", "first latina to bring in feminist ideas in a patriarchy system");
+INSERT INTO major_accomplishments (name, career, net_worth, top_achievement) VALUES ("Oscar.delaRenta", "fashion designer", "200Million", "reshaped first ladies public images");
+INSERT INTO major_accomplishments (name, career, net_worth, top_achievement) VALUES ("Dolores.Huerta", "activist", "1Million", "first latina inducted in the National Women's Hall of Fame");
+
+CREATE TABLE honors (id INTEGER PRIMARY KEY, top_award TEXT, culture_impact TEXT);
+
+INSERT INTO honors (top_award, culture_impact) VALUES ("first solo female album #1", "paved the way for latin performers");
+INSERT INTO honors (top_award, culture_impact) VALUES ("emmy/tony/egot", "paved the way for non-traditional castings of latinas");
+INSERT INTO honors (top_award, culture_impact) VALUES ("world series MVP award", "helped unprivileged children");
+INSERT INTO honors (top_award, culture_impact) VALUES ("award from academy of american poets", "most significant latina writers");
+INSERT INTO honors (top_award, culture_impact) VALUES ("CFDA 2006 womenswear designer", "five decades of styling the rich/famous");
+INSERT INTO honors (top_award, culture_impact) VALUES ("presidential medal of freedom", "helped create agricultural labor relations act");
+
+SELECT latino_stars.name, latino_stars.nationality 
+FROM latino_stars
+JOIN honors
+ON latino_stars.id = honors.id;
+
+
+
+
+SELECT latino_stars.name, latino_stars.nationality, honors.top_award, honors.culture_impact
+FROM latino_stars
+LEFT OUTER JOIN honors
+ON latino_stars.id = honors.id;
